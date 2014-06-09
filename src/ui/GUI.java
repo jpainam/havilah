@@ -4,10 +4,9 @@
  */
 package ui;
 
-import ui.garment.AddGarment;
 import ui.garment.DisplayGarment;
-import ui.employee.AddStudentForm;
-import ui.employee.DisplayEmployee;
+import ui.student.AddStudentForm;
+import ui.student.DisplayStudent;
 
 /**
  *
@@ -53,21 +52,17 @@ public final class GUI extends javax.swing.JFrame {
         jmAddAccount = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jmEdit = new javax.swing.JMenu();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jmDisplayEmployee = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jmAddStudent = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jmAddLeave = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -121,9 +116,8 @@ public final class GUI extends javax.swing.JFrame {
         jmenuBar.add(jmFile);
 
         jmEdit.setText("List");
-        jmEdit.add(jSeparator2);
 
-        jmDisplayEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/display_employee.png"))); // NOI18N
+        jmDisplayEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/display_student.png"))); // NOI18N
         jmDisplayEmployee.setText("Students");
         jmDisplayEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,8 +125,9 @@ public final class GUI extends javax.swing.JFrame {
             }
         });
         jmEdit.add(jmDisplayEmployee);
+        jmEdit.add(jSeparator2);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/display_garment.png"))); // NOI18N
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/display_leave.png"))); // NOI18N
         jMenuItem3.setText("Leave");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +140,7 @@ public final class GUI extends javax.swing.JFrame {
 
         jMenu1.setText("Add");
 
-        jmAddStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user.png"))); // NOI18N
+        jmAddStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/student_add.png"))); // NOI18N
         jmAddStudent.setText("Student");
         jmAddStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +148,9 @@ public final class GUI extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jmAddStudent);
+        jMenu1.add(jSeparator4);
 
-        jmAddLeave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/employee.png"))); // NOI18N
+        jmAddLeave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_account.png"))); // NOI18N
         jmAddLeave.setText("Leave");
         jmAddLeave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,19 +160,6 @@ public final class GUI extends javax.swing.JFrame {
         jMenu1.add(jmAddLeave);
 
         jmenuBar.add(jMenu1);
-
-        jMenu3.setText("Order");
-
-        jMenuItem11.setText("Checkout");
-        jMenu3.add(jMenuItem11);
-
-        jMenuItem12.setText("Edit order");
-        jMenu3.add(jMenuItem12);
-
-        jMenuItem13.setText("Place an order");
-        jMenu3.add(jMenuItem13);
-
-        jmenuBar.add(jMenu3);
 
         jMenu2.setText("Help");
 
@@ -189,14 +172,6 @@ public final class GUI extends javax.swing.JFrame {
         jMenuItem10.setText("About us");
         jMenuItem10.setToolTipText("Form about us");
         jMenu2.add(jMenuItem10);
-
-        jMenuItem6.setText("jMenuItem6");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem6);
 
         jmenuBar.add(jMenu2);
 
@@ -236,7 +211,7 @@ public final class GUI extends javax.swing.JFrame {
     private void jmDisplayEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDisplayEmployeeActionPerformed
         try{
             //JOptionPane.showMessageDialog(null, "Ceci est le clic");
-            this.setContentPane(new DisplayEmployee());
+            this.setContentPane(new DisplayStudent());
             this.repaint();
             this.pack();
             //JOptionPane.showMessageDialog(null, "Ceci est le clic");
@@ -260,26 +235,24 @@ public final class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jmAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAddStudentActionPerformed
-        // TODO add your handling code here:
+        try{
+            this.getContentPane().removeAll();
+            this.setContentPane(new AddStudentForm());
+            this.repaint();
+            this.pack();
+        }catch(IllegalStateException ex){
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jmAddStudentActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
@@ -287,6 +260,7 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JMenu jmAccount;
     private javax.swing.JMenuItem jmAddAccount;
     private javax.swing.JMenuItem jmAddLeave;

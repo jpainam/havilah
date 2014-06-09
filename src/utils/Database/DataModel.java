@@ -35,7 +35,7 @@ public abstract class DataModel<E> {
                 Properties props = new Properties();
                 props.put("user", "root");
                 props.put("password", "");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/havilah", props);
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/havilahdb", props);
             }
             return connection;
          }catch(SQLException | ClassNotFoundException ex){

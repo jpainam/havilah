@@ -4,6 +4,8 @@
  */
 package ui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
@@ -35,6 +37,7 @@ public class LoginOkCancel extends javax.swing.JDialog {
     public LoginOkCancel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
         // Close the dialog when Esc is pressed
         String cancelName = "cancel";
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
@@ -46,6 +49,10 @@ public class LoginOkCancel extends javax.swing.JDialog {
                 doClose(RET_CANCEL);
             }
         });
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - getWidth()) / 2);
+	int y = (int) ((dimension.getHeight() - getHeight()) / 2);
+	setLocation(x, y);
     }
 
     /**
@@ -103,9 +110,9 @@ public class LoginOkCancel extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setText("Password");
 
-        username.setText("paul");
+        username.setText("admin");
 
-        password.setText("paul");
+        password.setText("admin");
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);

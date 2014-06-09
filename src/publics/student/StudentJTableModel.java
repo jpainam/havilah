@@ -65,8 +65,8 @@ public class StudentJTableModel extends AbstractTableModel{
         switch(columnIndex){
             case 0 : return "" + (rowIndex + 1);
             case 1 : return e.getMatric();
-            case 2 : return e.getFname();
-            case 3 : return e.getLname();
+            case 2 : return e.getFirstname();
+            case 3 : return e.getLastname();
             //case 4 : return e.getJobTitle();
             case 5 : return e.getPhone();
         }

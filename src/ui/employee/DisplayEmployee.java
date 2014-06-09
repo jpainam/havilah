@@ -190,7 +190,7 @@ public class DisplayEmployee extends javax.swing.JPanel{
 
     private void jbSearchEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchEmployeeActionPerformed
         ArrayList<Student> employee;
-        employee = (ArrayList<Student>) DBStudent.searchEmployee(jtSearchEmployee.getText());
+        employee = (ArrayList<Student>) DBStudent.searchStudent(jtSearchEmployee.getText());
         table.removeAll();
         table.setModel(new StudentJTableModel(employee));
       
@@ -212,7 +212,7 @@ public class DisplayEmployee extends javax.swing.JPanel{
         GUI g = GUI.getInstance();
         g.getContentPane().removeAll();
         //JOptionPane.showMessageDialog(null, "I here");
-        g.setContentPane(new EditEmployee(DBStudent.getData(ssn)));
+        //g.setContentPane(new EditEmployee(DBStudent.getData(ssn)));
         //JOptionPane.showMessageDialog(null, "I here again");
         g.repaint();
         g.pack();

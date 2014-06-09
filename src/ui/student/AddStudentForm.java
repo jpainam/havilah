@@ -2,14 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.employee;
+package ui.student;
+
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import publics.student.DBStudent;
@@ -17,6 +16,7 @@ import publics.student.DBDepartment;
 import publics.student.Student;
 import publics.student.DepartmentComboBoxModel;
 import publics.student.Department;
+import ui.GUI;
 
 /**
  *
@@ -46,7 +46,7 @@ public class AddStudentForm extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jcDepartment = new javax.swing.JComboBox();
-        jtSSN = new javax.swing.JTextField();
+        jtMatric = new javax.swing.JTextField();
         jtFirstName = new javax.swing.JTextField();
         jtLastName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -58,18 +58,16 @@ public class AddStudentForm extends javax.swing.JPanel {
         jxDateBirth = new org.jdesktop.swingx.JXDatePicker();
         jcSex = new javax.swing.JComboBox();
         jLabel14 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtmiddlename = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtparentNo = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jtParent = new javax.swing.JTextField();
         warningPanel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jbValidate = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbCancel = new javax.swing.JButton();
+        jbReset = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(813, 473));
 
@@ -84,6 +82,12 @@ public class AddStudentForm extends javax.swing.JPanel {
         jLabel4.setText("Department");
 
         jcDepartment.setModel(new DefaultComboBoxModel(publics.student.DBDepartment.getData().toArray()));
+
+        jtMatric.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtMatricActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Address");
 
@@ -100,10 +104,6 @@ public class AddStudentForm extends javax.swing.JPanel {
         jLabel15.setText("Parent N°");
 
         jLabel16.setText("Parent's Name");
-
-        jRadioButton1.setText("Male");
-
-        jRadioButton2.setText("Female");
 
         javax.swing.GroupLayout employeeDetailsPanelLayout = new javax.swing.GroupLayout(employeeDetailsPanel);
         employeeDetailsPanel.setLayout(employeeDetailsPanelLayout);
@@ -123,11 +123,11 @@ public class AddStudentForm extends javax.swing.JPanel {
                                 .addGap(20, 20, 20)
                                 .addGroup(employeeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                                    .addComponent(jtSSN, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtMatric, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtFirstName, javax.swing.GroupLayout.Alignment.LEADING)))
                             .addGroup(employeeDetailsPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1)))
+                                .addComponent(jtmiddlename)))
                         .addGap(37, 37, 37)
                         .addGroup(employeeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -141,7 +141,7 @@ public class AddStudentForm extends javax.swing.JPanel {
                                 .addGroup(employeeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jxDateBirth, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jtTelephon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2))
+                                    .addComponent(jtparentNo))
                                 .addGap(35, 35, 35))
                             .addComponent(jtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29))
@@ -158,14 +158,8 @@ public class AddStudentForm extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, employeeDetailsPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3)))
+                                .addComponent(jtParent)))
                         .addGap(64, 64, 64))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeDetailsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jRadioButton2)
-                .addGap(96, 96, 96))
         );
 
         employeeDetailsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jtAddress, jtTelephon});
@@ -176,7 +170,7 @@ public class AddStudentForm extends javax.swing.JPanel {
                 .addGap(3, 3, 3)
                 .addGroup(employeeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtMatric, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jtAddress))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -190,27 +184,24 @@ public class AddStudentForm extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtparentNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(employeeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtmiddlename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jxDateBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(employeeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtParent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(employeeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jcSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(1, 1, 1)
-                .addGroup(employeeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)))
+                .addGap(24, 24, 24))
         );
 
         warningPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -240,9 +231,9 @@ public class AddStudentForm extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Cancel");
+        jbCancel.setText("Cancel");
 
-        jButton1.setText("Reset");
+        jbReset.setText("Reset");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -252,9 +243,9 @@ public class AddStudentForm extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jButton2)
+                        .addComponent(jbCancel)
                         .addGap(231, 231, 231)
-                        .addComponent(jButton1)
+                        .addComponent(jbReset)
                         .addGap(174, 174, 174)
                         .addComponent(jbValidate))
                     .addGroup(layout.createSequentialGroup()
@@ -264,7 +255,7 @@ public class AddStudentForm extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(employeeDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,34 +268,41 @@ public class AddStudentForm extends javax.swing.JPanel {
                 .addComponent(warningPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(jbCancel)
                     .addComponent(jbValidate)
-                    .addComponent(jButton1))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jbReset))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    private String getSSN(){
-        if(!this.jtSSN.getText().isEmpty())
-            return this.jtSSN.getText();
+
+    private String getMatric() {
+        if (!this.jtMatric.getText().isEmpty()) {
+            return this.jtMatric.getText();
+        }
         return "";
     }
-    private String getFirstName(){
-        if(!this.jtFirstName.getText().isEmpty())
+
+    private String getFirstName() {
+        if (!this.jtFirstName.getText().isEmpty()) {
             return this.jtFirstName.getText();
-        else
+        } else {
             return "";
+        }
     }
-    private String getLastName(){
-        if(!this.jtLastName.getText().isEmpty())
+
+    private String getLastName() {
+        if (!this.jtLastName.getText().isEmpty()) {
             return this.jtLastName.getText();
-        else
+        } else {
             return "";
+        }
     }
-    private Date getDob(){
+
+    private Date getDob() {
         String entree = getSqlDob();
-        if(entree.isEmpty())
+        if (entree.isEmpty()) {
             return new Date(0);
-        else{
+        } else {
             String[] st = entree.split("-");
             Calendar cal = Calendar.getInstance();
             //JOptionPane.showMessageDialog(null, st[0] + " " + st[1] + " " + st[2]);
@@ -314,60 +312,104 @@ public class AddStudentForm extends javax.swing.JPanel {
             return d;
         }
     }
+
     /**
-     * 
+     *
      * @return the date of birth in the SQL format
      */
-    public String getSqlDob(){
+    public String getSqlDob() {
         DateFormat dateFormat = new SimpleDateFormat("E dd/MM/yyyy");
         jxDateBirth.setFormats(dateFormat);
         DateFormat sysDate = new SimpleDateFormat("yyyy-MM-dd");
         String date_to_store = sysDate.format(jxDateBirth.getDate()).toString();
         return date_to_store;
     }
-    private Department getJob(){
+
+    private Department getDepartment() {
         Object obj = jcDepartment.getSelectedItem();
-        if(obj instanceof Department){
-            Department job = (Department)obj;
+        if (obj instanceof Department) {
+            Department job = (Department) obj;
             return job;
         }
         return null;
     }
-    private String getAddress(){
-        if(!this.jtAddress.getText().isEmpty())
+
+    private String getAddress() {
+        if (!this.jtAddress.getText().isEmpty()) {
             return jtAddress.getText();
-        else
+        } else {
             return "";
+        }
     }
-    private String getPhone(){
-        if(!jtTelephon.getText().isEmpty())
+
+    private String getPhone() {
+        if (!jtTelephon.getText().isEmpty()) {
             return jtTelephon.getText();
+        }
         return "";
     }
-    private String getSex(){
+
+    private String getSex() {
         return jcSex.getSelectedItem().toString();
     }
-    private String getPIN(){
-        String pin = new String(jpPIN.getPassword());
-        if(!pin.isEmpty())
-            return pin;
-        return "";
+
+    private String getMiddleName() {
+        if (!jtmiddlename.getText().isEmpty()) {
+            return this.jtmiddlename.getText();
+        } else {
+            return new String();
+        }
     }
+
+    private String getParentNo() {
+        if (!jtparentNo.getText().isEmpty()) {
+            return jtparentNo.getText();
+        } else {
+            return new String();
+        }
+    }
+
+    public String getInfoParent() {
+        if (jtParent.getText().isEmpty()) {
+            return jtParent.getText();
+        } else {
+            return new String();
+        }
+    }
+    /*
+     *Student(int id, String matric, String fname, String lname,
+     String mname, String sex, Date dob, String address,
+     String phone, String parentno, String parent, Department depart) {
+     */
     private void jbValidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbValidateActionPerformed
-        Student emp = new Student(getSSN(), getFirstName(), getLastName(), 
-                getDob(), getJob(), getAddress(), getPhone(), getSex(), getPIN());
-        /* Send the employee to the database */
-        if(DBStudent.storeData(emp)){
-            JOptionPane.showMessageDialog(null, "Employee inserted with success");
-        }else
+
+        Department depart = (Department) jcDepartment.getSelectedItem();
+        Student stud = new Student(new Integer(1), getMatric(), getFirstName(),
+                getLastName(), getMiddleName(), getSex(), getDob(),
+                getAddress(), getPhone(), getParentNo(), this.getInfoParent(),
+                depart);
+        /* Send the Student to the database */
+        if (DBStudent.storeData(stud)) {
+            JOptionPane.showMessageDialog(null, "Student inserted with success!!!");
+            try {
+                GUI.getInstance().getContentPane().removeAll();
+                GUI.getInstance().setContentPane(new DisplayStudent());
+                GUI.getInstance().repaint();
+                GUI.getInstance().pack();
+            } catch (IllegalStateException ex) {
+                ex.printStackTrace();
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "Error in inserting the employee");
-        
+        }
+
     }//GEN-LAST:event_jbValidateActionPerformed
 
+    private void jtMatricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtMatricActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtMatricActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel employeeDetailsPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -380,21 +422,20 @@ public class AddStudentForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton jbCancel;
+    private javax.swing.JButton jbReset;
     private javax.swing.JButton jbValidate;
     private javax.swing.JComboBox jcDepartment;
     private javax.swing.JComboBox jcSex;
     private javax.swing.JTextField jtAddress;
     private javax.swing.JTextField jtFirstName;
     private javax.swing.JTextField jtLastName;
-    private javax.swing.JTextField jtSSN;
+    private javax.swing.JTextField jtMatric;
+    private javax.swing.JTextField jtParent;
     private javax.swing.JTextField jtTelephon;
+    private javax.swing.JTextField jtmiddlename;
+    private javax.swing.JTextField jtparentNo;
     private org.jdesktop.swingx.JXDatePicker jxDateBirth;
     private javax.swing.JPanel warningPanel;
     // End of variables declaration//GEN-END:variables
-
 }
