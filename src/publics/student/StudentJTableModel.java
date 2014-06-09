@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
  * Modification : 11 Nov 2013
  */
 public class StudentJTableModel extends AbstractTableModel{
-    private String[] columns = {"N°", "SSN", "First Name", "Last Name", "Job Title", "Phone N°"};
+    private String[] columns = {"ID", "MATRIC", "First Name", "Last Name", "Middle Name", ""};
     private static ArrayList<Student> data = new ArrayList<>();
     /**
      * Constructor
@@ -67,7 +67,7 @@ public class StudentJTableModel extends AbstractTableModel{
             case 1 : return e.getMatric();
             case 2 : return e.getFname();
             case 3 : return e.getLname();
-            case 4 : return e.getJobTitle();
+            //case 4 : return e.getJobTitle();
             case 5 : return e.getPhone();
         }
         return "";

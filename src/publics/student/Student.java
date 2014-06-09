@@ -14,13 +14,15 @@ public final class Student{
     private String matric;
     private String fname;
     private String lname;
+    private String mname;
     private Date dob;
-    private MyJob job;
     private String address;
     private String phone;
     private String sex;
-    public static volatile Student instance = null;
-    private String pin;
+    private String parentno;
+    private String parent;
+    
+    private static volatile Student instance = null;
     /**
      * Default constructor
      */
@@ -31,43 +33,20 @@ public final class Student{
         Calendar cal = Calendar.getInstance();
         this.dob = new Date(cal.getTimeInMillis());
     }
-    public Student(String SSN, String fname, String lname, Date dob, MyJob job, 
-            String addr, String phone, String sex, String pin){
-        this.matric = SSN;
-        this.fname = fname;
-        this.lname = lname;
-        this.dob = dob;
-        this.job = job;
-        this.address = addr;
-        this.phone = phone;
-        this.sex = sex;
-        this.pin = pin;
-    }
-    /**
-     *
-     * @param SSN ssn of the employee
-     * @param fname his first name
-     * @param lname his last name
-     * @param dob his date of birth
-     * @param job his job @see MyJob 
-     * @param addr the address of the employee
-     * @param phone the phone number
-     * @param sex the sex type Enumerative
-     * @param pin the password used for the connection
-     * @param id the id, auto increment in the database
-     */
-    public Student(String SSN, String fname, String lname, Date dob, MyJob job, 
-            String addr, String phone, String sex, String pin, int id){
-        this.matric = SSN;
-        this.fname = fname;
-        this.lname = lname;
-        this.dob = dob;
-        this.job = job;
-        this.address = addr;
-        this.phone = phone;
-        this.sex = sex;
-        this.pin = pin;
+    public Student(int id, String matric, String fname, String lname, 
+            String mname, String sex,Date dob, String address, 
+                    String phone, String parentno, String parent){
         this.id = id;
+        this.matric = matric;
+        this.fname = fname;
+        this.lname = lname;
+        this.mname = mname;
+        this.dob = dob;
+        this.address = address;
+        this.phone = phone;
+        this.sex = sex;
+        this.parent = parent;
+        this.parentno = parentno;        
     }
     /**
      * Constructor by copy
@@ -158,8 +137,7 @@ public final class Student{
      */
     @Override
     public String toString() {
-        return "Employee [FName : " + this.getFname()+ ", LName : " + this.getLname() + 
-                " Dob : " + this.getDob() + " PIN = " + pin + " ]";
+        return super.toString();
     }
     public final static Student getInstance(){
         if(Student.instance == null){
@@ -171,19 +149,7 @@ public final class Student{
         return Student.instance;
     }
 
-    public String getJobTitle() {
-        if(this.job != null)
-            return this.job.getTitle();
-        else
-            return "";
-    }
-
-    public String getPin() {
-        if(!this.pin.isEmpty())
-            return this.pin;
-        else
-            return "";
-    }
+    
 
     public String getAddress() {
         if(!this.address.isEmpty())
@@ -204,11 +170,5 @@ public final class Student{
             return sex;
         else
             return "";
-    }
-    public MyJob getJob(){
-        if(this.job == null)
-            return this.job;
-        else
-            return new MyJob();
     }
 }

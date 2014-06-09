@@ -1,12 +1,16 @@
 
 package publics.student;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import utils.Database.DataModel;
 import static utils.Database.DataModel.getConnection;
 
@@ -16,25 +20,29 @@ import static utils.Database.DataModel.getConnection;
  */
 public class DBStudent extends DataModel<Student>{
     
-
+    /*
+     * Student(int id, String matric, String fname, String lname, 
+            String mname, String sex,Date dob, String address, 
+                    String phone, String parentno, String parent)
+    * */
     public static List<Student> getData() {
         List<Student> list = new ArrayList<>();
         try{
             Statement stmt = getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT SSN, EFName, ELName, DOB, JobTitle, "
-                    + "Address, Phone, Sex, Pin FROM employee ORDER BY SSN");
+            ResultSet rs = stmt.executeQuery("SELECT * student ORDER BY MATRIC");
             setMetaData(rs.getMetaData());
             while(rs.next()){
-                MyJob job = DBJob.getData(rs.getString(5));
-                Student emp = new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), 
-                        job, rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
-                list.add(emp);
+                Student stud = new Student(rs.getInt("ID"), rs.getString("MATRIC"), 
+                        rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), 
+                        rs.getString("MIDDLENAME"), rs.getString("SEX"), rs.getDate("DOB"), 
+                        rs.getString("ADDRESS"),rs.getString("PHONE"), rs.getString("PARENTNO"), rs.getString("PARENT"));
+                list.add(stud);
             }
             rs.close();
             stmt.close();
             return list;
         }catch(SQLException ex){
-            ex.printStackTrace();
+            Logger.getLogger(DBStudent.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
    }
@@ -79,9 +87,9 @@ public class DBStudent extends DataModel<Student>{
             stmt.setString(1, key);
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
-                MyJob job = DBJob.getData(rs.getString(5));
-                return new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), 
-                        job, rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+                
+                //return new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), 
+                    //    job, rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
             }else
                 return employee;
         }catch(SQLException ex){
@@ -159,7 +167,7 @@ public class DBStudent extends DataModel<Student>{
            
             //stmt.setInt(4, e.getJob().getIdJob());
             stmt.setInt(4, 1);
-            stmt.setString(5, e.getPin());
+            //stmt.setString(5, e.getPin());
             stmt.setString(6, e.getAddress());
             stmt.setString(7, e.getPhone());
             stmt.setDate(8, e.getDob());

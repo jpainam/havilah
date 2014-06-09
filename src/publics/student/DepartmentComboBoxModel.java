@@ -13,13 +13,13 @@ import javax.swing.DefaultComboBoxModel;
  * Created : 07 Nov 2013
  * Modification : 07 Nov 2013
  */
-public class JobComboBoxModel extends DefaultComboBoxModel<MyJob>{
+public class DepartmentComboBoxModel extends DefaultComboBoxModel<Department>{
     
-    public JobComboBoxModel(Vector<MyJob> e) {
+    public DepartmentComboBoxModel(Vector<Department> e) {
         super(e);
     }
 
-    public JobComboBoxModel() {
+    public DepartmentComboBoxModel() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -29,14 +29,14 @@ public class JobComboBoxModel extends DefaultComboBoxModel<MyJob>{
     }
 
     @Override
-    public MyJob getElementAt(int index) {
+    public Department getElementAt(int index) {
         return super.getElementAt(index); 
     }
 
     @Override
     public int getIndexOf(Object anObject) {
-        /*if(anObject instanceof MyJob){
-            MyJob obj = MyJob(anObject);
+        /*if(anObject instanceof Department){
+            Department obj = Department(anObject);
         }*/
         return super.getIndexOf(anObject);
     }

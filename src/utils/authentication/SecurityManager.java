@@ -11,7 +11,7 @@ import publics.Users;
  *
  * @author jpainam
  * created : 01 - Nov - 2013
- * Last modification : 01 - Nov - 2013
+ * Last modification : 05 - June - 2014
  */
 public final class SecurityManager {
     public static boolean login(String username, String password) {

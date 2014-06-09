@@ -11,9 +11,9 @@ import java.util.Calendar;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import publics.student.DBStudent;
-import publics.student.DBJob;
+import publics.student.DBDepartment;
 import publics.student.Student;
-import publics.student.MyJob;
+import publics.student.Department;
 
 /**
  *
@@ -81,7 +81,7 @@ public class EditEmployee extends javax.swing.JPanel {
 
         jLabel4.setText("Job Title");
 
-        jcJobTitle.setModel(new DefaultComboBoxModel(DBJob.getData().toArray()));
+        jcJobTitle.setModel(new DefaultComboBoxModel(DBDepartment.getData().toArray()));
 
         jLabel5.setText("Address");
 
@@ -342,10 +342,10 @@ public class EditEmployee extends javax.swing.JPanel {
         }else
             return "0000-00-00";
     }
-    private MyJob getJob(){
+    private Department getJob(){
         Object obj = jcJobTitle.getSelectedItem();
-        if(obj instanceof MyJob){
-            MyJob job = (MyJob)obj;
+        if(obj instanceof Department){
+            Department job = (Department)obj;
             return job;
         }
         return null;

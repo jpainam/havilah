@@ -7,6 +7,11 @@
         <Property name="text" type="java.lang.String" value="jMenuItem1"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem4"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jmenuBar">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jmFile">
@@ -65,28 +70,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmEdit">
           <Properties>
-            <Property name="text" type="java.lang.String" value="View"/>
+            <Property name="text" type="java.lang.String" value="List"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/display_customer.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Customer Details"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/display_inventory.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Check Inventory"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmDisplayEmployee">
@@ -94,7 +80,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/display_employee.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Display Employee"/>
+                <Property name="text" type="java.lang.String" value="Students"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmDisplayEmployeeActionPerformed"/>
@@ -105,7 +91,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/display_garment.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Display Garment"/>
+                <Property name="text" type="java.lang.String" value="Leave"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
@@ -115,45 +101,29 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Operation"/>
+            <Property name="text" type="java.lang.String" value="Add"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmAddCustomer">
+            <MenuItem class="javax.swing.JMenuItem" name="jmAddStudent">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/user.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Add Customer"/>
+                <Property name="text" type="java.lang.String" value="Student"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmAddStudentActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmAddEmployee">
+            <MenuItem class="javax.swing.JMenuItem" name="jmAddLeave">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/employee.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Add Employee"/>
+                <Property name="text" type="java.lang.String" value="Leave"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmAddEmployeeActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmAddManager">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/groupe.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Add Manager"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmAddGarment">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/add_garment.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Add Garment"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmAddGarmentActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmAddLeaveActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -203,6 +173,14 @@
                 <Property name="text" type="java.lang.String" value="About us"/>
                 <Property name="toolTipText" type="java.lang.String" value="Form about us"/>
               </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jMenuItem6"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

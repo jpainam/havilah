@@ -18,32 +18,32 @@ import utils.Database.DataModel;
  * Created : 07 Nov 2013
  * Modification : 08 Nov 2013
  */
-public class DBJob extends DataModel{
-    public DBJob(){
+public class DBDepartment extends DataModel{
+    public DBDepartment(){
         super();
     }
-    public static MyJob getData(String id){
-        MyJob job = null;
+    public static Department getData(String id){
+        Department depart = null;
         try{
-            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM job WHERE IdJob = ?");
+            PreparedStatement stmt = getConnection().prepareStatement("SELECT * FROM department WHERE ID = ?");
             stmt.setString(1, id);
             ResultSet rs = stmt.executeQuery();
             if(rs.next())
-                return new MyJob(rs.getInt(1), rs.getString(2));
+                return new Department(rs.getInt(1), rs.getString(2));
             else
-                return job;
+                return depart;
         }catch(SQLException ex){
             ex.printStackTrace();
         }
-        return job;
+        return depart;
     }
-    public static List<MyJob> getData(){
-        List<MyJob> list = new ArrayList<>();
+    public static List<Department> getData(){
+        List<Department> list = new ArrayList<>();
         try{
             Statement stmt = getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM job ORDER BY TITLE");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM department ORDER BY NAME");
             while(rs.next()){
-                list.add(new MyJob(rs.getInt(1), rs.getString(2)));
+                list.add(new Department(rs.getInt(1), rs.getString(2)));
             }
         }catch(SQLException ex){
             ex.printStackTrace();

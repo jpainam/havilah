@@ -6,7 +6,7 @@ package ui;
 
 import ui.garment.AddGarment;
 import ui.garment.DisplayGarment;
-import ui.employee.AddEmployee;
+import ui.employee.AddStudentForm;
 import ui.employee.DisplayEmployee;
 
 /**
@@ -42,6 +42,7 @@ public final class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jmenuBar = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
@@ -52,16 +53,12 @@ public final class GUI extends javax.swing.JFrame {
         jmAddAccount = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jmEdit = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jmDisplayEmployee = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jmAddCustomer = new javax.swing.JMenuItem();
-        jmAddEmployee = new javax.swing.JMenuItem();
-        jmAddManager = new javax.swing.JMenuItem();
-        jmAddGarment = new javax.swing.JMenuItem();
+        jmAddStudent = new javax.swing.JMenuItem();
+        jmAddLeave = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
@@ -70,8 +67,11 @@ public final class GUI extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dry cleaning 1.0");
@@ -120,24 +120,11 @@ public final class GUI extends javax.swing.JFrame {
 
         jmenuBar.add(jmFile);
 
-        jmEdit.setText("View");
-
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/display_customer.png"))); // NOI18N
-        jMenuItem2.setText("Customer Details");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jmEdit.add(jMenuItem2);
-
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/display_inventory.png"))); // NOI18N
-        jMenuItem5.setText("Check Inventory");
-        jmEdit.add(jMenuItem5);
+        jmEdit.setText("List");
         jmEdit.add(jSeparator2);
 
         jmDisplayEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/display_employee.png"))); // NOI18N
-        jmDisplayEmployee.setText("Display Employee");
+        jmDisplayEmployee.setText("Students");
         jmDisplayEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmDisplayEmployeeActionPerformed(evt);
@@ -146,7 +133,7 @@ public final class GUI extends javax.swing.JFrame {
         jmEdit.add(jmDisplayEmployee);
 
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/display_garment.png"))); // NOI18N
-        jMenuItem3.setText("Display Garment");
+        jMenuItem3.setText("Leave");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -156,33 +143,25 @@ public final class GUI extends javax.swing.JFrame {
 
         jmenuBar.add(jmEdit);
 
-        jMenu1.setText("Operation");
+        jMenu1.setText("Add");
 
-        jmAddCustomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user.png"))); // NOI18N
-        jmAddCustomer.setText("Add Customer");
-        jMenu1.add(jmAddCustomer);
-
-        jmAddEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/employee.png"))); // NOI18N
-        jmAddEmployee.setText("Add Employee");
-        jmAddEmployee.addActionListener(new java.awt.event.ActionListener() {
+        jmAddStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user.png"))); // NOI18N
+        jmAddStudent.setText("Student");
+        jmAddStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmAddEmployeeActionPerformed(evt);
+                jmAddStudentActionPerformed(evt);
             }
         });
-        jMenu1.add(jmAddEmployee);
+        jMenu1.add(jmAddStudent);
 
-        jmAddManager.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/groupe.png"))); // NOI18N
-        jmAddManager.setText("Add Manager");
-        jMenu1.add(jmAddManager);
-
-        jmAddGarment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_garment.png"))); // NOI18N
-        jmAddGarment.setText("Add Garment");
-        jmAddGarment.addActionListener(new java.awt.event.ActionListener() {
+        jmAddLeave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/employee.png"))); // NOI18N
+        jmAddLeave.setText("Leave");
+        jmAddLeave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmAddGarmentActionPerformed(evt);
+                jmAddLeaveActionPerformed(evt);
             }
         });
-        jMenu1.add(jmAddGarment);
+        jMenu1.add(jmAddLeave);
 
         jmenuBar.add(jMenu1);
 
@@ -211,6 +190,14 @@ public final class GUI extends javax.swing.JFrame {
         jMenuItem10.setToolTipText("Form about us");
         jMenu2.add(jMenuItem10);
 
+        jMenuItem6.setText("jMenuItem6");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
+
         jmenuBar.add(jMenu2);
 
         setJMenuBar(jmenuBar);
@@ -234,17 +221,17 @@ public final class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAddEmployeeActionPerformed
+    private void jmAddLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAddLeaveActionPerformed
         try{
             //JOptionPane.showMessageDialog(null, "Ceci est le clic");
-            this.setContentPane(new AddEmployee());
+            this.setContentPane(new AddStudentForm());
             this.repaint();
             this.pack();
             //JOptionPane.showMessageDialog(null, "Ceci est le clic");
         }catch(IllegalStateException ex){
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_jmAddEmployeeActionPerformed
+    }//GEN-LAST:event_jmAddLeaveActionPerformed
 
     private void jmDisplayEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDisplayEmployeeActionPerformed
         try{
@@ -257,16 +244,6 @@ public final class GUI extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jmDisplayEmployeeActionPerformed
-
-    private void jmAddGarmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAddGarmentActionPerformed
-        try{
-            this.setContentPane(new AddGarment());
-            this.repaint();
-            this.pack();
-        }catch(IllegalStateException ex){
-            ex.printStackTrace();
-        }
-    }//GEN-LAST:event_jmAddGarmentActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         try{
@@ -283,9 +260,13 @@ public final class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jmAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAddStudentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmAddStudentActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
@@ -296,9 +277,9 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
@@ -308,10 +289,8 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JMenu jmAccount;
     private javax.swing.JMenuItem jmAddAccount;
-    private javax.swing.JMenuItem jmAddCustomer;
-    private javax.swing.JMenuItem jmAddEmployee;
-    private javax.swing.JMenuItem jmAddGarment;
-    private javax.swing.JMenuItem jmAddManager;
+    private javax.swing.JMenuItem jmAddLeave;
+    private javax.swing.JMenuItem jmAddStudent;
     private javax.swing.JMenuItem jmDisplayAccount;
     private javax.swing.JMenuItem jmDisplayEmployee;
     private javax.swing.JMenu jmEdit;

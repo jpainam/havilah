@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package publics;
 
 /**
@@ -9,18 +5,23 @@ package publics;
  * @author jpainam
  */
 public class Users{
-    private String username;
+    private int iduser;
+    private String login;
     private String password;
+    private String profile;
+    
+    public Users(int id, String login, String password, String profile){
+        this.iduser = id;
+        this.login = login;
+        this.password = password;
+        this.profile = profile;
+    
+    }
     public Users(){}
-    public Users(String user, String pwd){
-        this.username = user;
-        this.password = pwd;
-    }
-    public String getUsername(){
-        return username;
-    }
-    public void setUsername(String u){
-        this.username = u;
+    
+    public Users(String login, String password){
+        this.login = login;
+        this.password = password;
     }
     public String getPassword(){
         return this.password;
@@ -31,7 +32,7 @@ public class Users{
 
     @Override
     public String toString() {
-        return "Users{" + "username=" + username + ", password=" + password + '}';
+        return "Users{" + "Login=" + login + ", password=" + password + '}';
     }
     
 }
