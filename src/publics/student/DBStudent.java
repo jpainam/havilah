@@ -1,5 +1,6 @@
 package publics.student;
 
+import com.sun.xml.internal.bind.v2.runtime.JAXBContextImpl;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 import utils.Database.DataModel;
 import static utils.Database.DataModel.getConnection;
@@ -60,7 +62,7 @@ public class DBStudent extends DataModel<Student> {
      */
     public static List<Student> searchStudent(String keyword) {
         List<Student> student = new ArrayList<>();
-        String query = "SELECT MATRIC FROM student e "
+        String query = "SELECT MATRIC FROM student s "
                 + "WHERE MATRIC LIKE ? OR FIRSTNAME LIKE ? OR LASTNAME LIKE ? "
                 + "OR MIDDLENAME LIKE ? OR SEX LIKE ? OR PHONE LIKE ? "
                 + "OR ADDRESS LIKE ? OR PARENTNO LIKE ? OR PARENT LIKE ? "
@@ -69,8 +71,9 @@ public class DBStudent extends DataModel<Student> {
             //Query query = session.CreateQuery();
             PreparedStatement stmt = getConnection().prepareStatement(query);
             /* fill the params */
-            int nb = query.lastIndexOf("?");
-            for (int i = 1; i <= nb; i++) {
+           // int nb = query.lastIndexOf("?");
+            //JOptionPane.showMessageDialog(null, nb);
+            for (int i = 1; i <= 10; i++) {
                 stmt.setString(i, "%" + keyword + "%");
             }
             ResultSet rs = stmt.executeQuery();

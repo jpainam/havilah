@@ -5,7 +5,8 @@ import java.util.Calendar;
 
 /**
  *
- * @author jpainam Created : 01 - Nov - 2013 Last Modification : 01 - Nov - 2013
+ * @author jpainam Created : 01 - Nov - 2013 
+ * Last Modification : 01 - Nov - 2013
  */
 public final class Student {
 
@@ -203,10 +204,16 @@ public final class Student {
     }
 
     String getParentNo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!this.parentno.isEmpty())
+            return this.parentno;
+        else
+            return "";
     }
 
     String getInfoParent() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!this.parent.isEmpty())
+            return this.parent;
+        else
+            return "";
     }
 }

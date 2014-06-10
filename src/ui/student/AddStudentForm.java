@@ -12,9 +12,9 @@ import java.util.Calendar;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import publics.student.DBStudent;
-import publics.student.DBDepartment;
+
 import publics.student.Student;
-import publics.student.DepartmentComboBoxModel;
+
 import publics.student.Department;
 import ui.GUI;
 
@@ -321,6 +321,8 @@ public class AddStudentForm extends javax.swing.JPanel {
         DateFormat dateFormat = new SimpleDateFormat("E dd/MM/yyyy");
         jxDateBirth.setFormats(dateFormat);
         DateFormat sysDate = new SimpleDateFormat("yyyy-MM-dd");
+        if(jxDateBirth.getDate() == null)
+            jxDateBirth.setDate(new Date(Calendar.getInstance().getTimeInMillis()));
         String date_to_store = sysDate.format(jxDateBirth.getDate()).toString();
         return date_to_store;
     }
@@ -328,8 +330,8 @@ public class AddStudentForm extends javax.swing.JPanel {
     private Department getDepartment() {
         Object obj = jcDepartment.getSelectedItem();
         if (obj instanceof Department) {
-            Department job = (Department) obj;
-            return job;
+            Department depart = (Department) obj;
+            return depart;
         }
         return null;
     }
@@ -383,11 +385,10 @@ public class AddStudentForm extends javax.swing.JPanel {
      */
     private void jbValidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbValidateActionPerformed
 
-        Department depart = (Department) jcDepartment.getSelectedItem();
         Student stud = new Student(new Integer(1), getMatric(), getFirstName(),
                 getLastName(), getMiddleName(), getSex(), getDob(),
                 getAddress(), getPhone(), getParentNo(), this.getInfoParent(),
-                depart);
+                getDepartment());
         /* Send the Student to the database */
         if (DBStudent.storeData(stud)) {
             JOptionPane.showMessageDialog(null, "Student inserted with success!!!");
